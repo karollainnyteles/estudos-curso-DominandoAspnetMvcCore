@@ -1,3 +1,4 @@
+using Estudo.UI.AppModelo.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,8 @@ namespace Estudo.UI.AppModelo
             });
 
             services.AddMvc();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+            // Dessa forma quando a interface for recebida no construtor, uma instância de Pedido(da classe) sera gerada
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
