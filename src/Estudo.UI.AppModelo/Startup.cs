@@ -1,15 +1,11 @@
 using Estudo.UI.AppModelo.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Estudo.UI.AppModelo
 {
@@ -32,6 +28,8 @@ namespace Estudo.UI.AppModelo
                 options.AreaViewLocationFormats.Add("/Modulos/{2}/Views/Shared/{0}.cshtml");
                 options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
             });
+
+            services.AddDbContext<MeuDbContext>(m => m.UseSqlServer(Configuration.GetConnectionString("MeuDbContext")));
 
             services.AddMvc();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
