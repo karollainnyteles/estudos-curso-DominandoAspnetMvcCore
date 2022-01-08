@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Estudo.UI.AppModelo.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace Estudo.UI.AppModelo.Data
         public MeuDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Aluno> ALunos { get; set; }
     }
 }
