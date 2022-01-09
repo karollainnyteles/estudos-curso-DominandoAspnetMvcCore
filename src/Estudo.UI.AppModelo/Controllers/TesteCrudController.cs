@@ -41,8 +41,9 @@ namespace Estudo.UI.AppModelo.Controllers
 
             //Excluindo
             _contexto.ALunos.Remove(aluno);
-
-            return View();
+            _contexto.SaveChanges();
+            return View("_Layout");
+            
         }
     }
 }
